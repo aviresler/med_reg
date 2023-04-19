@@ -20,16 +20,17 @@ annexes_text = full_text[annexes_loc.regs[0][0]:]
 main_text = full_text[intro_loc.regs[0][0]:annexes_loc.regs[0][0]]
 
 reg_exps_introduction =[
-    '\n\((\d+)\) ']
+    '\n\(\d+\) ']
 
 reg_exps_main_text =[
     '(CHAPTER .*)\n\n?(.*)',
     '\n(Article \d*)\n\n?(.*)',
     '\n(\d*)\. ',
+    '\n\(\d+\)',
     '\n\d+\.\d+\.? ',
     '\n\d+\.\d+\.\d+\.? ',
     '\n\([a-z]\)',
-    '\n ']
+    '\n- ']
 
 reg_exps_annexes =[
     '(ANNEX .*)\n\n?(.*)',
@@ -39,7 +40,7 @@ reg_exps_annexes =[
     '\n\d+\.\d+\.? ',
     '\n\d+\.\d+\.\d+\.? ',
     '\n\([a-z]\)',
-    '\n ']
+    '\n- ']
 
 def parse_text(text, reg_exps, prefix):
     mask = np.zeros(len(text),dtype=int)
@@ -79,5 +80,5 @@ dict_annexes = parse_text(annexes_text, reg_exps_annexes,'annex')
 
 save_dict = {'intro': dict_intro, 'main': dict_main, 'annexes': dict_annexes}
 
-with open('Directive_2017_745_5Apr2017.pickle', 'wb') as handle:
+with open('docs/Directive_2017_745_5Apr2017.pickle', 'wb') as handle:
     pickle.dump(save_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
