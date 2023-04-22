@@ -38,6 +38,7 @@ def print_text_and_structure(text_dict, query):
                 while parent_id != -1:
                     total_string.insert(0, section_dict['text'][parent_id])
                     parent_id = section_dict['structure'][parent_id]
+                total_string.insert(0,section)
                 candidates.append(total_string)
 
     # equal branches are branches where all elements but the last one are identical
