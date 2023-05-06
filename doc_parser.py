@@ -3,6 +3,7 @@
 import re
 import numpy as np
 import pickle
+import json
 
 # @todo: improve structure
 
@@ -82,3 +83,6 @@ save_dict = {'intro': dict_intro, 'main': dict_main, 'annexes': dict_annexes}
 
 with open('docs/Directive_2017_745_5Apr2017.pickle', 'wb') as handle:
     pickle.dump(save_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+with open('docs/Directive_2017_745_5Apr2017.json', "w") as write_file:
+    json.dump(save_dict, write_file, indent=4)

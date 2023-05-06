@@ -1,5 +1,6 @@
 import pickle
 import re
+import json
 
 
 # equal branch is a branch where all elements but the last one are identical
@@ -69,8 +70,10 @@ def print_text_and_structure(text_dict, query):
 
 
 if __name__ == "__main__":
-    with open('docs/Directive_2017_745_5Apr2017.pickle', 'rb') as handle:
-        doc_dict = pickle.load(handle)
+
+    with open('docs/Directive_2017_745_5Apr2017.json') as json_file:
+        doc_dict = json.load(json_file)
+    
 
     QUERY_TEXT = 'Clinical evaluation plan'  # Clinical evaluation plan' # 'Clinical development plan'
 
