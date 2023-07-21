@@ -66,7 +66,7 @@ def save_phrases_and_embeddings(file):
 
 
 if __name__ == "__main__":
-    save_phrases_and_embeddings('docs/Directive_2017_745_5Apr2017.pickle')
+    #save_phrases_and_embeddings('docs/Directive_2017_745_5Apr2017.pickle')
 
     # load embeddings
     embed = np.load('docs/phrases_embed.npy')
@@ -90,4 +90,4 @@ if __name__ == "__main__":
         ind = most_similar_inds[k]
         candidate = phrases[ind]
         already_printed.append(candidate)
-        print(candidate + ' , sim = ' + str(similarity[ind]))
+        print('{0}    sim={1:.2f}'.format(candidate, similarity[ind]))
